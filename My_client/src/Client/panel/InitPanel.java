@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import com.google.gson.Gson;
 
+import Client.ClientApp;
 import Client.Dto.RequestDto;
 import frame.MainFrame;
 
@@ -22,7 +23,7 @@ public class InitPanel extends JPanel{
 	private final int HEIGHT = 800;
 	public final Color kakaoColor = new Color(249, 224, 0);
 	public final Color kakaoColor2 = new Color(254, 229, 0);
-	private Socket socket;
+	private Socket socket ;
 	private Gson gson;
 	
 	public InitPanel() {

@@ -16,11 +16,16 @@ import Client.Dto.RequestDto;
 import frame.MainFrame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 
 public class LoginPanel extends InitPanel {
 	
 	private static LoginPanel instance;
-	
+	private OutputStream outputStream ;
+	private InputStream inputStream;
 	public static LoginPanel getInstance() {
 		if(instance == null) {
 			instance = new LoginPanel();
@@ -60,7 +65,8 @@ public class LoginPanel extends InitPanel {
 			public void mouseClicked(MouseEvent e) {
 				username = usernameField.getText();
 				RequestDto requestDto = new RequestDto("login",username);
-				String requestDtoToJson = gson.toJson(requestDto);
+				sendDto(requestDto);
+				
 				
 				
 			}
