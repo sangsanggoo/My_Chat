@@ -1,6 +1,9 @@
 package Server;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -11,14 +14,17 @@ public class ServerApp {
 	
 	public static void main(String[] args) {
 		ServerSocket serverSocket ;
-		
+		InputStream inputStream;
 			try {
 				serverSocket = new ServerSocket(1234);
 				System.out.println("서버 시작");
+				
 				while(true) {
 					Socket socket = serverSocket.accept();
+					
 					My_ConnectedSocket connectedSocket = new My_ConnectedSocket(socket);
 					connectedSocket.start();
+					
 					
 					
 				}

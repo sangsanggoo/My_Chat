@@ -33,22 +33,24 @@ public class My_ConnectedSocket extends Thread {
 	}
 	@Override
 	public void run() {
-		
+				
 			try {
-				inputStream = socket.getInputStream();
+
+				inputStream = socket.getInputStream(); 
 				BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
 				
 				while(true) {
 					String request = in.readLine();
 					RequestDto requestDto = gson.fromJson(request,RequestDto.class);
-					
+
 					switch(requestDto.getResource()) {
 					case "login" :
 						userList.add(requestDto.getBody());
 						outputStream = socket.getOutputStream();
 						PrintWriter out = new PrintWriter(outputStream, true);
 						out.println(new RequestDto(requestDto.getResource(),requestDto.getBody()));
-						System.out.println(gson.toJson(new ResponseDto(requestDto.getResource(),requestDto.getBody()), RequestDto.class));
+						System.out.println(requestDto);
+						break;
 					}
 					
 				}

@@ -13,9 +13,7 @@ import javax.swing.JPanel;
 
 import com.google.gson.Gson;
 
-import Client.ClientApp;
 import Client.Dto.RequestDto;
-import frame.MainFrame;
 
 public class InitPanel extends JPanel{
 	
@@ -31,7 +29,8 @@ public class InitPanel extends JPanel{
 		setLayout(null);
 		setBorder(null);
 		setSize(WIDTH, HEIGHT);
-		socket = MainFrame.getSocket();
+
+		socket = Client.MainFrame.getSocket();
 		gson = new Gson();
 		
 		
@@ -52,6 +51,7 @@ public class InitPanel extends JPanel{
 			outputStream = socket.getOutputStream();
 			PrintWriter printWriter = new PrintWriter(outputStream,true);
 			printWriter.print(gson.toJson(requestDto));
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
