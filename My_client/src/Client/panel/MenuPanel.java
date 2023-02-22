@@ -3,16 +3,20 @@ package Client.panel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import com.google.gson.Gson;
 
+import Client.Dto.RequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -58,7 +62,13 @@ public class MenuPanel extends InitPanel {
 		ImageIcon plusbuttonIcon = new ImageIcon("./image/plusbutton.png");
 		ImageIcon resizedplusbuttonIcon = new ImageIcon(plusbuttonIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
 		JButton plusButton = new JButton(resizedplusbuttonIcon);
-
+		plusButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				roomname = JOptionPane.showInputDialog(null, "방이름을 입력해주세요.", "방이름입력", JOptionPane.INFORMATION_MESSAGE);
+				sendRequest(new RequestDto("createRoom", roomname));
+			}
+		});
 		plusButton.setForeground(new Color(255, 255, 255));
 		add(plusButton);
 		plusButton.setBounds(20, 80, 40, 40);
@@ -75,13 +85,11 @@ public class MenuPanel extends InitPanel {
 		roomList = new JList<>(ls);
 		scrollPane.setViewportView(roomList);
 		
+		
+	
+	}
 
 
 	
-	
 
-
-	
-
-}
 }

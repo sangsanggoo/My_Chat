@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import com.google.gson.Gson;
 
 import Client.Dto.RequestDto;
+import Client.Frame.MainFrame;
 
 public class InitPanel extends JPanel{
 	
@@ -21,7 +22,7 @@ public class InitPanel extends JPanel{
 	private final int HEIGHT = 800;
 	public final Color kakaoColor = new Color(249, 224, 0);
 	public final Color kakaoColor2 = new Color(254, 229, 0);
-	private Socket socket ;
+	private Socket socket;
 	private Gson gson;
 	
 	public InitPanel() {
@@ -29,8 +30,7 @@ public class InitPanel extends JPanel{
 		setLayout(null);
 		setBorder(null);
 		setSize(WIDTH, HEIGHT);
-
-		socket = Client.MainFrame.getSocket();
+		socket = MainFrame.getSocket();
 		gson = new Gson();
 		
 		
@@ -43,21 +43,19 @@ public class InitPanel extends JPanel{
 		ImageIcon resizedImage = new ImageIcon(image.getImage().getScaledInstance(width, length, Image.SCALE_SMOOTH));
 		return resizedImage;
 	}
-
-//	requestDto 서버로 보내기
-	public void sendDto(RequestDto requestDto) {
+	
+//	요청 보내기 메소드
+	public void sendRequest(RequestDto requestDto){
 		OutputStream outputStream;
 		try {
 			outputStream = socket.getOutputStream();
-			PrintWriter printWriter = new PrintWriter(outputStream,true);
-			printWriter.print(gson.toJson(requestDto));
-
+			PrintWriter out = new PrintWriter(outputStream, true);
+			out.println(gson.toJson(requestDto));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	}
 
+	}
+	
 
 }

@@ -1,9 +1,11 @@
-package Client;
+package Client.Frame;
 
+import java.io.InputStream;
 import java.net.Socket;
 
 import javax.swing.JFrame;
 
+import Client.ClientApplication;
 import Client.panel.MainPanel;
 import lombok.Getter;
 
@@ -11,6 +13,7 @@ public class MainFrame extends JFrame {
 	private static MainFrame instance;
 	@Getter
 	private static Socket socket;
+	private InputStream inputStream;
 	
 	public static MainFrame getInstance() {
 		if(instance == null) {
@@ -20,10 +23,10 @@ public class MainFrame extends JFrame {
 	}
 	
 	public MainFrame() {
-		socket = ClientApp.getSocket();
+		socket = ClientApplication.getSocket();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 495, 839);
+		setBounds(100, 100, 480, 800);
 		setContentPane(MainPanel.getInstance());
 
 

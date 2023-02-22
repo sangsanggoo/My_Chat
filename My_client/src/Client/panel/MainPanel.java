@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 package Client.panel;
+package Client.panel;
 
 import java.awt.CardLayout;
 
@@ -16,7 +16,7 @@ public class MainPanel extends InitPanel {
 		return instance;
 	};
 
-	@Getter
+	@Getter                                                                                                                                
 	private static CardLayout mainCard;
 
 	private MainPanel() {
