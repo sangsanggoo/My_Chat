@@ -64,7 +64,7 @@ public class LoginPanel extends InitPanel {
 			public void mouseClicked(MouseEvent e) {			
 				username = usernameField.getText();
 				sendRequest(new RequestDto("getRoomList", "pass"));
-				sendRequest(new RequestDto("login", username));
+				sendRequest(new RequestDto("showroomlist", username));
 
 				
 			}

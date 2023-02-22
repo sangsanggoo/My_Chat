@@ -48,11 +48,14 @@ public class ConnectedSocket extends Thread {
 						UserRepository.getInstance().getUserlist().add(user);
 						System.out.println(UserRepository.getInstance().getUserlist());
 						sendResponse(requestDto.getResource(),gson.toJson(user));
+					
 					case "createroom":
 						room = new Room(requestDto.getBody());
 						RoomRepository.getInstance().getRoomliList().add(room);
 						System.out.println(RoomRepository.getInstance().getRoomliList());
 						sendResponse(requestDto.getResource(),gson.toJson(room));
+					case "showroomlist" :
+						sendResponse(requestDto.getResource(), gson.toJson(RoomRepository.getInstance().getRoomliList()));
 						
 			
 				}

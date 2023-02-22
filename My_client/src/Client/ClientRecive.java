@@ -6,11 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 
 import Client.Dto.ResponseDto;
 import Client.Repository.Room;
+import Client.Repository.RoomRepository;
 import Client.Repository.User;
 import Client.panel.MainPanel;
 import lombok.RequiredArgsConstructor;
@@ -40,9 +43,11 @@ public class ClientRecive extends Thread{
 					case "login":
 						mainCard = MainPanel.getMainCard();
 						mainCard.show(MainPanel.getInstance(), "menuPanel");
-						
 						break;
-					
+					case "createroom" :
+						List<Room> roomlistList = new ArrayList<>();  
+						for ()
+
 				}
 			}
 			
