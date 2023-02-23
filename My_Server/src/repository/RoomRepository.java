@@ -15,5 +15,5 @@ public class RoomRepository {
 		
 		return instance;
 	};
-	List<Room> roomliList = new ArrayList<>();
+	private List<Room> roomliList = new ArrayList<>();
 }

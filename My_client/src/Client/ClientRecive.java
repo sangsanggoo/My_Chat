@@ -44,10 +44,15 @@ public class ClientRecive extends Thread{
 						mainCard = MainPanel.getMainCard();
 						mainCard.show(MainPanel.getInstance(), "menuPanel");
 						break;
+					case "showroomlist" :
+						System.out.println(responseDto.getBody());
+						break;
 					case "createroom" :
-						List<Room> roomlistList = new ArrayList<>();  
-						for ()
-
+						mainCard = MainPanel.getMainCard();
+						mainCard.show(MainPanel.getInstance(), "loginpanel");
+						List<Room> roomlist = gson.fromJson(responseDto.getBody(), List.class);
+						System.out.println(roomlist);
+						break;
 				}
 			}
 			

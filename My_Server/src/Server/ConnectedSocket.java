@@ -43,19 +43,26 @@ public class ConnectedSocket extends Thread {
 				RequestDto requestDto = gson.fromJson(request, RequestDto.class);
 
 				switch(requestDto.getResource()) {
+//					로그인 받음
 					case "login":
 						user = new User(requestDto.getBody());
 						UserRepository.getInstance().getUserlist().add(user);
 						System.out.println(UserRepository.getInstance().getUserlist());
 						sendResponse(requestDto.getResource(),gson.toJson(user));
-					
+						break;
+//					방생성 받음
 					case "createroom":
 						room = new Room(requestDto.getBody());
 						RoomRepository.getInstance().getRoomliList().add(room);
 						System.out.println(RoomRepository.getInstance().getRoomliList());
-						sendResponse(requestDto.getResource(),gson.toJson(room));
+						
+						sendResponse("createroom",gson.toJson(RoomRepository.getInstance().getRoomliList()));
+						break;
+//					로그인 받음
 					case "showroomlist" :
+						System.out.println(gson.toJson(RoomRepository.getInstance().getRoomliList()));
 						sendResponse(requestDto.getResource(), gson.toJson(RoomRepository.getInstance().getRoomliList()));
+						break;
 						
 			
 				}
